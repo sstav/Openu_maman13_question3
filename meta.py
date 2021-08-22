@@ -4,13 +4,40 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class Users:
+    def __init__(self, name, profession):
+        self.name = name
+        self.profession = profession
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Engineers(Users):
+    def __init__(self, name, profession):
+        super().__init__(name, profession)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    def __str__(self):
+        return "מהנדסים"
+
+
+class Technicians(Users):
+    def __init__(self, name, profession):
+        super().__init__(name, profession)
+
+    def __str__(self):
+        return "טכנאים"
+
+
+class Barber(Users):
+    def __init__(self, name, profession):
+        super().__init__(name, profession)
+
+    def __str__(self):
+        return "ספרים"
+
+
+class Politicians(Users):
+    def __init__(self, name, profession):
+        super().__init__(name, profession)
+
+    def __str__(self):
+        return "פוליטיקאים"
+
