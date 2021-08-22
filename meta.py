@@ -70,27 +70,32 @@ class Machines(Engineers):
 
 
 # Helpers Functions:
-def factory(classname, name, profession):
-    # Get class from globals and create an instance
-    m = globals()[classname]("234", "234")
-    # Get the function (from the instance) that we need to call
-    func = getattr(m,"234","234")
-    # Return function
-    return func()
+def factory(new_class, base_class, new_method, new_attr):
+    if base_class.strip() == "":
+        base_class_input = (object,)
+    else:
+        base_class_input = (object,base_class)
 
-#Main Program:
+    gen_class = type(new_class, base_class_input, {new_method: lambda self: print("Self: " + self + " Attribute: " + new_attr)})
+    return gen_class
 
+
+# Main Program:
 
 if __name__ == "__main__":
-    while_quit = True
-    while while_quit:
-        new_class = input("Please enter the name of new class:")
-        base_class = input("Please enter name of base class (blank if none):")
-        new_method = input("Please enter name of new method for class Student:")
-        new_attr = input("Please enter name of new attribute for class Student:")
+    # new_class = input("Please enter the name of new class:")
+    # base_class = input("Please enter name of base class (blank if none):")
+    # new_method = input("Please enter name of new method for class Student:")
+    # new_attr = input("Please enter name of new attribute for class Student:")
+    new_class = "Student"
+    base_class = "Politician"
+    new_method = "homework"
+    new_attr = "major"
 
-        res = factory(res, 2323, 2323)
-        print(res)
 
+    gen_class = factory(new_class, base_class, new_method, new_attr)
 
+    print("Class " + new_class + " created with base class: " + str(base_class))
+    print ("Class __name__ is: " + gen_class.__name__)
+    print("Class __dict__ is: " + gen_class.__dict__)
 
