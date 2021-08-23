@@ -81,14 +81,10 @@ def factory(_new_class, _base_class, _new_method, _new_attr):
 # Main Program:
 
 if __name__ == "__main__":
-    # new_class = input("Please enter the name of new class:")
-    # base_class = input("Please enter name of base class (blank if none):")
-    # new_method = input("Please enter name of new method for class Student:")
-    # new_attr = input("Please enter name of new attribute for class Student:")
-    new_class = "Student"
-    base_class = "Politician"
-    new_method = "homework"
-    new_attr = "major"
+    new_class = input("Please enter the name of new class:")
+    base_class = input("Please enter name of base class (blank if none):")
+    new_method = input("Please enter name of new method for class Student:")
+    new_attr = input("Please enter name of new attribute for class Student:")
 
     generate_new_class = factory(new_class, base_class, new_method, new_attr)
 
