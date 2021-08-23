@@ -1,6 +1,4 @@
 # Standard import
-import importlib
-
 
 class Users:
     def __init__(self, name, profession):
@@ -70,13 +68,13 @@ class Machines(Engineers):
 
 
 # Helpers Functions:
-def factory(new_class, base_class, new_method, new_attr):
-    if base_class.strip() == "":
-        base_class_input = (object,)
-    else:
-        base_class_input = (object,base_class)
+def factory(_new_class, _base_class, _new_method, _new_attr):
+    gen_class = type(_new_class, (Users,),
+                     {
+                         _new_method: lambda self: print("Self: " + self + " Method "),
+                         _new_attr: _base_class
+                     })
 
-    gen_class = type(new_class, base_class_input, {new_method: lambda self: print("Self: " + self + " Attribute: " + new_attr)})
     return gen_class
 
 
@@ -92,10 +90,8 @@ if __name__ == "__main__":
     new_method = "homework"
     new_attr = "major"
 
-
-    gen_class = factory(new_class, base_class, new_method, new_attr)
+    generate_new_class = factory(new_class, base_class, new_method, new_attr)
 
     print("Class " + new_class + " created with base class: " + str(base_class))
-    print ("Class __name__ is: " + gen_class.__name__)
-    print("Class __dict__ is: " + gen_class.__dict__)
-
+    print("Class __name__ is: " + generate_new_class.__name__)
+    print("Class __dict__ is: " + str(generate_new_class.__dict__))
